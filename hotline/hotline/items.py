@@ -10,6 +10,8 @@ from scrapy.item import Item, Field
 class HotlineItem(Item):
     name = Field()
     payment = Field()
+    price = Field()
+    description = Field()
 
 
 

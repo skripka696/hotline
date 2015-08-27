@@ -14,6 +14,12 @@ BOT_NAME = 'hotline'
 SPIDER_MODULES = ['hotline.spiders']
 NEWSPIDER_MODULE = 'hotline.spiders'
 
+PIDER_MODULES = ['hotline.spiders']
+NEWSPIDER_MODULE = 'hotline.spiders'
+
+DEFAULT_ITEM_CLASS = 'hotline.items.Website'
+ITEM_PIPELINES = {'hotline.pipelines.HotlinePipeline': 1}
+
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
 #USER_AGENT = 'hotline (+http://www.yourdomain.com)'
