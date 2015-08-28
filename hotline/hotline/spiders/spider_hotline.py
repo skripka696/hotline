@@ -20,18 +20,23 @@ class HotlineSpider(CrawlSpider):
     def get_value(self, xpath):
         result = xpath.extract()
         if len(result) == 1:
-            return result[0]
+            return ''.join(result[0]).strip()
         elif len(result) > 1:
-            return result
+            for i, item in enumerate(result):
+                result[i] = item.strip()
+            return ''.join(result)
         else:
             return "None"
-git
+
     def parse_item(self, response):
         self.logger.info('Parse starting for %s' % response.url)
         hxs = response
         item = HotlineItem()
         item['name'] = self.get_value(hxs.xpath('/html/body/div/div/div/div/h1/text()'))
         item['description'] = self.get_value(hxs.xpath('/html/body/div/div/div/div/div/div/div/div/p/text()'))
+        item['average_price'] = self.get_value(hxs.xpath('/html/body/div/div/div/div/div/div/div/div/div/div/span/span/text()'))
+        item['price'] = self.get_value(hxs.xpath('/html/body/div/div/div/div/div/div/div/div/div/div/span/span/strong/text()'))
+        item['shop'] = self.get_value(hxs.xpath('/html/body/div/div/div/div/div/ul/li/noindex/a/@href'))
 
         for link in response.xpath('/html/body/div/div/div/div/div/div/span/a/@href').extract():
             if link.endswith('/?tab=3'):

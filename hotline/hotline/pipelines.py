@@ -42,6 +42,7 @@ class HotlinePipeline(object):
     def __init__(self):
         self.file = codecs.open('items.jl', 'w', encoding='utf-8')
 
+
     def process_item(self, item, spider):
         line = json.dumps(dict(item), indent=4, ensure_ascii=False) + "\n"
         self.file.write(line)

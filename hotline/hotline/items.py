@@ -9,10 +9,11 @@ from scrapy.item import Item, Field
 
 class HotlineItem(Item):
     name = Field()
-    payment = Field()
+    average_price = Field()
     price = Field()
     description = Field()
     rewiew = Field()
+    shop = Field()
 
 
 
