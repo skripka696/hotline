@@ -24,7 +24,7 @@ class HotlineSpider(CrawlSpider):
         elif len(result) > 1:
             for i, item in enumerate(result):
                 result[i] = item.strip()
-            return ''.join(result)
+            return '\n'.join(result)
         else:
             return "None"
 
