@@ -12,6 +12,7 @@ class HotlineItem(Item):
     payment = Field()
     price = Field()
     description = Field()
+    rewiew = Field()
 
 
 
